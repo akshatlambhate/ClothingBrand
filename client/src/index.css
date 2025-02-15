@@ -5,6 +5,18 @@ a.active hr{
     display: block;
 
 }
+.custom-toast {
+  background: #4CAF50; /* Green background */
+  color: white; /* White text */
+}
+
+.custom-toast.Toastify__toast-icon {
+  color: rgb(59, 214, 82); /* Icon color */
+}
+
+.custom-toast.Toastify__progress-bar {
+  background: green; /* Progress bar color */
+}
 *{
     font-family: Outfit;
 }
