@@ -1,7 +1,14 @@
 import React from 'react'
 import { assets } from '../assets/frontend_assets/assets'
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 const Hero = () => {
+  const items =[ <img src={assets.hero_img}  alt="" />,
+    <img src={assets.hero_img2} height={1259} width={1008} className='object-contain' alt="" />,
+    <img src={assets.hero_img3}  alt="" />,
+    <img src={assets.hero_img4}  alt="" />
+  ]
   return (
   <div className="flex flex-col sm:flex-row border border-gray-400">
     {/* Hero Left Side */}
@@ -21,7 +28,11 @@ const Hero = () => {
 
     </div>
     {/* Hero Right Side */}
-    <img src={assets.hero_img} className='w-full sm:w-1/2' alt="" />
+    <div className='w-full sm:w-1/2  object-contain transition ease-in'>
+       <AliceCarousel disableDotsControls disableButtonsControls mouseTracking autoPlay animationDuration={1500} infinite items={items} />
+    </div>
+   
+
   </div>
   )
 }

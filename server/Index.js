@@ -9,7 +9,7 @@ import productRouter from './routes/productRoute.js';
 
 // Server Start
 const app = express()
-const port = 8000;
+const port = 8001;
 app.listen(port, ()=>{
      console.log(`Server is Started at ${port}`)
 })
