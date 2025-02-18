@@ -5,7 +5,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const Hero = () => {
   const items =[ <img src={assets.hero_img}  alt="" />,
-    <img src={assets.hero_img2} height={1259} width={1008} className='object-contain' alt="" />,
+    <img src={assets.hero_img2} className='object-contain h-auto' alt="" />,
     <img src={assets.hero_img3}  alt="" />,
     <img src={assets.hero_img4}  alt="" />
   ]
@@ -28,7 +28,7 @@ const Hero = () => {
 
     </div>
     {/* Hero Right Side */}
-    <div className='w-full sm:w-1/2  object-contain transition ease-in'>
+    <div className='w-full sm:w-1/2 h-[] object-cover transition ease-in h-fit'>
        <AliceCarousel disableDotsControls disableButtonsControls mouseTracking autoPlay animationDuration={1500} infinite items={items} />
     </div>
    

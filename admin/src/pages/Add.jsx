@@ -15,20 +15,20 @@ const Add = ({token}) => {
       const [price, setPrice] = useState('');
       const [category, setCategory] = useState('')
        const [subCategory, setSubCategory] = useState('');
-       const [bestSeller, setBestSeller] = useState('');
+       const [bestseller, setBestSeller] = useState(false);
        const [sizes, setSizes] = useState([]);
 
        const onSubmitHandler =async(e) => { 
         e.preventDefault();
          try {
           const formData = new FormData()
-          formData.append("name",name)
-          formData.append("price",price)
-          formData.append("description",description)
-          formData.append("category",category)
-          formData.append("subCategory",subCategory)
-          formData.append("bestSeller",bestSeller)
-          formData.append("sizes",JSON.stringify(sizes))
+          formData.append("name",name);
+          formData.append("price",price);
+          formData.append("description",description);
+          formData.append("category",category);
+          formData.append("subCategory",subCategory);
+          formData.append("bestSeller",bestseller);
+          formData.append("sizes",JSON.stringify(sizes));
 
            image1 && formData.append("image1",image1)
            image2 && formData.append("image2",image2)
@@ -36,16 +36,18 @@ const Add = ({token}) => {
            image4 && formData.append("image4",image4)
      
             const response = await axios.post(backendUrl + '/api/product/add', formData,{headers:{token}})
+            console.log(response)
             
             if (response.data.success){
               toast.success(response.data.message);
-              setName('');
-              setDescription('');
-              setPrice('');
-              setImage1(false);
-              setImage2(false);
-              setImage3(false);
-              setImage4(false);
+              // setName('');
+              // setDescription('');
+              // setPrice('');
+              // setImage1(false);
+              // setImage2(false);
+              // setImage3(false);
+              // setImage4(false);
+              // setBestSeller(false);
               
             }
             else{
@@ -116,6 +118,7 @@ const Add = ({token}) => {
           
           onChange={(e)=>setCategory(e.target.value)}
           value={category}>
+            <option value= "">Choose the Category</option>
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             <option value="Kids">Kids</option>
@@ -126,7 +129,8 @@ const Add = ({token}) => {
           <select className="w-full px-3 py-2"
            onChange={(e)=>setSubCategory(e.target.value)}
            value={subCategory}>
-            <option value="Topwear">Topwear</option>
+             <option value= "">Choose the SubCategory</option>
+             <option value= "Topwear">Topwear</option>
             <option value="Bottomwear">Bottomwear</option>
             <option value="Winterwear">Winterwear</option>
           </select>
@@ -151,7 +155,15 @@ const Add = ({token}) => {
       </div>
      </div>
      <div className="flex gap-2 mt-2">
-      <input onChange={(e)=>setBestSeller(prev=>!prev)} checked={bestSeller} className="" type="checkbox" name="" id="bestseller" />
+     <input 
+  onChange={(e) => {
+    console.log("Checkbox Value:", e.target.checked); 
+    setBestSeller(e.target.checked);
+  }} 
+  checked={bestseller} 
+  type="checkbox"  
+  id="bestseller" 
+/>
       <label className="cursor-pointer " htmlFor="bestseller">Add to Best Seller</label>
      </div>
 
