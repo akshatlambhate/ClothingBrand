@@ -11,7 +11,7 @@ import orderRouter from './routes/orderRoute.js';
 
 // Server Start
 const app = express()
-const port = 4003;
+const port = process.env.PORT || 8000;
 app.listen(port, ()=>{
      console.log(`Server is Started at ${port}`)
 })
